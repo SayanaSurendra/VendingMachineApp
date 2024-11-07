@@ -25,7 +25,7 @@ public class Main {
         //System.out.println(chocolate.getId());
         item.request(chocolate.getId());
         item.getDescription(estrellaChips.getId());
-        item.getDescription(12);
+       // item.getDescription(12);
 
         String[] products= item.getProducts();
         for(String productDetails:products){
