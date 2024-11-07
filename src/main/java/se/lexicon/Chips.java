@@ -14,7 +14,7 @@ public class Chips extends Product {
 
     @Override
     public String examine() {
-        return getProductName() + " " + getPrice();
+        return "Product Details: " + this.toString();
     }
 
     @Override

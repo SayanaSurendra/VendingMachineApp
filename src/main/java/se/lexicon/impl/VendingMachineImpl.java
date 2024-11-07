@@ -15,6 +15,7 @@ public class VendingMachineImpl implements VendingMachine {
         this.depositPool = 0;
     }
 
+
     @Override
     public void addCurrency(int amount) {
         for(CurrencyDenomination denomination: CurrencyDenomination.values()) {
@@ -33,38 +34,39 @@ public class VendingMachineImpl implements VendingMachine {
 
     @Override
     public Product request(int id) {
-       Product requestedProduct=null;
        for(Product product: products){
             if(product.getId() == id){
                if(depositPool>= product.getPrice()){
                    depositPool-= product.getPrice();
-                   requestedProduct=product;
-
+                   System.out.println(product.examine());
+                   return product;
                }else{
-                   System.out.println("Insufficient balance");
-
+                   System.out.println("Insufficient balance, you need to add more amount");
+                   return null;
                }
-
             }
         }
-        return requestedProduct;
+
+       System.out.println("Product Id : "+ id+" not found");
+       return null;
+
     }
 
     @Override
     public int endSession() {
-        return 0;
+       this.depositPool=0;
+        return depositPool;
     }
 
     @Override
     public String getDescription(int id) {
-         String description=null;
-        for(Product product: products){
+         for(Product product: products){
             if(product.getId() == id) {
-                description=product.examine();
-
+                 return product.examine();
             }
             }
-        return description;
+        System.out.println("Product Id : "+ id +" not found");
+        return null;
     }
 
     @Override

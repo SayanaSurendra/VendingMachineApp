@@ -14,11 +14,7 @@ public class Chocolate extends Product {
 
     @Override
     public String examine() {
-        return "Chocolate{" +
-                "ProductName='" + getProductName() + '\'' +
-                " Price='" + getPrice() + '\'' +
-                " type='" + type + '\'' +
-                '}';
+        return "Product Details: " + this.toString();
     }
 
     @Override
