@@ -1,15 +1,48 @@
 package se.lexicon;
 
 import se.lexicon.model.Product;
+import se.lexicon.util.IDGenerator;
 
-public class Chocolate extends Product {
+public class Chocolate implements Product {
 
-    String type;
+    private int id;
+    private  double price;
+    private String productName;
+    private String type;
 
 
     public Chocolate(double price, String productName, String type) {
-        super(price, productName);
+        this.id= IDGenerator.generateId();
+        this.price = price;
+        this.productName = productName;
         this.type = type;
+    }
+
+
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public void setProductName(String productName) {
+        this.productName=productName;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setPrice(double price) {
+        this.price=price;
     }
 
     @Override
@@ -21,6 +54,7 @@ public class Chocolate extends Product {
     public String use() {
         return "Chcocolate is so yummy";
     }
+
 
     @Override
     public String toString() {

@@ -1,16 +1,46 @@
 package se.lexicon;
 
 import se.lexicon.model.Product;
+import se.lexicon.util.IDGenerator;
 
-public class Drinks extends Product {
+public class Drinks implements Product {
 
-    String flavor;
+    private int id;
+    private  double price;
+    private String productName;
+    private String flavor;
 
-    public Drinks(double price, String productName,String flavor) {
-        super(price, productName);
-        this.flavor=flavor;
+    public Drinks(double price, String productName, String flavor) {
+        this.id= IDGenerator.generateId();
+        this.price = price;
+        this.productName = productName;
+        this.flavor = flavor;
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public void setProductName(String productName) {
+        this.productName=productName;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setPrice(double price) {
+        this.price=price;
+    }
 
     @Override
     public String examine() {
